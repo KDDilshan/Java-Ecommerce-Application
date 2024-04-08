@@ -23,7 +23,7 @@ public class admin_login extends HttpServlet {
         String name=request.getParameter("username");
         String pass=request.getParameter("password");
         
-        if(pass==null && name==null){
+        if(pass==null || name==null || pass.isEmpty() || name.isEmpty()){
             response.getWriter().println("<h1>Name and password feids are empty</h1>");
             response.sendError(HttpServletResponse.SC_BAD_REQUEST,"Enter username password");
         }
@@ -41,13 +41,19 @@ public class admin_login extends HttpServlet {
                 boolean cheakPass=BCrypt.verifyer().verify(pass.toCharArray(), Admin_password).verified;
                 
                 if(cheakPass){
-                    HttpSession hs = request.getSession();
-                    Cookie usercookie=new Cookie("username",name);
+                    
+                    HttpSession session = request.getSession();
+                    session.setAttribute("username", name);
+                    session.setAttribute("id", Admin_id);
+                    
+                    
+                    Cookie usercookie=new Cookie(name,name);
                     usercookie.setMaxAge(3000);
                     usercookie.setSecure(true);
                     usercookie.setHttpOnly(true);
                     response.addCookie(usercookie);
-                    response.getWriter().println("<h1>You are logged in</h1>");//add the url of the page need to redierct
+                    
+                    response.getWriter().println("<h1>You are logged in</h1>");//add the url of the page need to redierct           
                 }else{
                     response.getWriter().println("Incorect password");
                 }
