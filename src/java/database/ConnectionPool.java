@@ -13,9 +13,9 @@ public class ConnectionPool {
     static {
         try {
             // Load the MySQL JDBC driver
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
     }
 
@@ -31,8 +31,9 @@ public class ConnectionPool {
             try {
                 connection.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                e.getMessage();
             }
         }
+        
     }
 }

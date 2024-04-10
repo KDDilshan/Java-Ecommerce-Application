@@ -46,8 +46,8 @@
                 return; 
             }
             
-           
-//            get all the uploaded files
+//           Fle uploading
+//          get all the uploaded files
             Collection<Part> parts = request.getParts();
             //            list to store imag urls
             List<String> imageUrls = new ArrayList<>();
