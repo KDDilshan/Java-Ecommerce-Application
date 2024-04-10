@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns={"/product_create"})
+@WebFilter(urlPatterns={"/product_create","/product_update"})
 public class Admin_auth implements Filter{
 
     @Override
@@ -27,7 +27,7 @@ public class Admin_auth implements Filter{
             } 
         }else{
             httpresponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            httpresponse.getWriter().println("<h1> Session not avilable </h1>");    
+            httpresponse.getWriter().println("<h1>logged in to access this page</h1>");    
         } 
     }
 
