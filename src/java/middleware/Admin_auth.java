@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns={"/product_create","/product_update"})
+@WebFilter(urlPatterns={"/product_create","/product_update","/product_view","/product_delete"})
 public class Admin_auth implements Filter{
 
     @Override
